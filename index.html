@@ -7,7 +7,6 @@
 <title>Thick thighs save lives 💗</title>
 
 <style>
-    /* Simple, cute sans-serif font */
     body {
         margin: 0;
         min-height: 100vh;
@@ -16,7 +15,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-family: "Poppins", "Arial", sans-serif;
+        font-family: "Poppins", sans-serif; /* simple cute font */
         color: #ff6f91;
         text-align: center;
         padding: 20px;
@@ -26,7 +25,6 @@
     .heading {
         font-size: 2rem;
         margin-bottom: 15px;
-        font-weight: 600;
     }
 
     img.pic {
@@ -111,7 +109,7 @@
 
 <dialog id="dialog">
     <img class="pic1" src="shy.jpg" alt="shy pic">
-    <p>YAYYY Knew you would say yes! 💕 See you on 14th!</p>
+    <p>YAYYY Knew you would say yes!💕 See you on 14th!</p>
     <button onclick="closeModal()" class="right">close ♡</button>
 </dialog>
 
@@ -120,28 +118,33 @@ const yesButton = document.getElementById('bocchi1');
 const noButton = document.getElementById('bocchi2');
 const dialog = document.getElementById("dialog");
 
-// List of playful messages when "No" is clicked
+// Messages for "No" button
 const noMessages = [
     "Are you sure?",
-    "Really sure? 😳",
-    "Are you positive? 😬",
-    "Pookie pleaseeeee 🥺💖",
+    "Really sure?😳",
+    "Are you positive?😬",
+    "Pookie pleaseeeee🥺💖",
     "Just think about it",
-    "If you say no, we will be veryy sad 😢",
-    "I'm sadddd. 😭💔"
+    "If you say no, we will be veryy sad😢",
+    "I'm sadddd.😭💔"
 ];
 
 let noClickCount = 0;
 let yesScale = 1;
+let noScale = 1;
 
-// When "No" is clicked
 noButton.addEventListener('click', function() {
     if (noClickCount < noMessages.length) {
         noButton.textContent = noMessages[noClickCount];
         noClickCount++;
-        // Grow the yes button faster
-        yesScale += 0.25; // bigger jump for dramatic effect
+
+        // Grow Yes button
+        yesScale += 0.2;
         yesButton.style.transform = `scale(${yesScale})`;
+
+        // Shrink No button
+        noScale = Math.max(0.5, noScale - 0.1); // minimum 50%
+        noButton.style.transform = `scale(${noScale})`;
     } else {
         noButton.textContent = "💔 No more options!";
     }
