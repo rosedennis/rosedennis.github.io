@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thick thighs saves lives 💗</title>
+<title>Thick thighs save lives 💗</title>
 
 <style>
+    /* Global Styles */
     body {
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         background: linear-gradient(180deg, #fff0f6, #ffffff);
         display: flex;
         flex-direction: column;
@@ -18,6 +19,8 @@
         font-family: "Comic Sans MS", "Poppins", cursive;
         color: #ff6f91;
         text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     .heading {
@@ -25,8 +28,9 @@
         margin-bottom: 15px;
     }
 
-    .pic {
-        width: 220px;
+    img.pic {
+        width: 80%;
+        max-width: 220px;
         border-radius: 20px;
         box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
         margin-bottom: 20px;
@@ -39,12 +43,13 @@
         font-size: 1rem;
         cursor: pointer;
         transition: 0.3s ease;
+        margin: 5px;
+        min-width: 120px;
     }
 
     #bocchi1 {
         background-color: #ffb6c1;
         color: white;
-        margin-right: 10px;
     }
 
     #bocchi1:hover {
@@ -53,12 +58,14 @@
     }
 
     #bocchi2 {
-        position: absolute;
         background-color: #fff;
         color: #ff6f91;
         border: 2px solid #ffb6c1;
-        left: 40%;
-        top: 75%;
+        position: relative;
+    }
+
+    #bocchi2:hover {
+        transform: translateX(-10px);
     }
 
     dialog {
@@ -67,10 +74,13 @@
         padding: 20px;
         background: #fff0f6;
         box-shadow: 0 15px 30px rgba(255, 182, 193, 0.5);
+        max-width: 90%;
     }
 
-    .pic1 {
+    dialog img.pic1 {
         border-radius: 20px;
+        width: 80%;
+        max-width: 210px;
         margin-bottom: 10px;
     }
 
@@ -78,6 +88,18 @@
         background-color: #ffb6c1;
         color: white;
         margin-top: 10px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+        .heading {
+            font-size: 1.5rem;
+        }
+
+        button {
+            font-size: 0.9rem;
+            padding: 10px 20px;
+        }
     }
 </style>
 </head>
@@ -88,22 +110,23 @@
 
 <img class="pic" src="pic.jpeg" alt="cute pic">
 
-<button id="bocchi1" onclick="openModal()">Yes! 💖</button>
-<button tabindex="-1" id="bocchi2">No.😳</button>
+<div>
+    <button id="bocchi1" onclick="openModal()">Yes! 💖</button>
+    <button id="bocchi2">No. 😳</button>
+</div>
 
 <dialog id="dialog">
-    <img class="pic1" src="shy.jpg" width="210" height="250" alt="">
+    <img class="pic1" src="shy.jpg" alt="shy pic">
     <p>YAYYY 💕 See you on 14th!</p>
     <button onclick="closeModal()" class="right">close ♡</button>
 </dialog>
 
 <script>
 const button2 = document.getElementById('bocchi2');
-let left = 40;
 
 button2.addEventListener('mouseover', function() {
-    left = left === 40 ? 30 : 40;
-    this.style.left = left + '%';
+    // Slight shift effect for fun
+    this.style.transform = this.style.transform === "translateX(-10px)" ? "translateX(10px)" : "translateX(-10px)";
 });
 
 var dialog = document.getElementById("dialog");
