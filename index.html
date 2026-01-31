@@ -7,7 +7,6 @@
 <title>Thick thighs save lives 💗</title>
 
 <style>
-    /* Global Styles */
     body {
         margin: 0;
         min-height: 100vh;
@@ -42,7 +41,7 @@
         border-radius: 30px;
         font-size: 1rem;
         cursor: pointer;
-        transition: 0.3s ease;
+        transition: 0.3s ease, transform 0.2s ease;
         margin: 5px;
         min-width: 120px;
     }
@@ -54,7 +53,6 @@
 
     #bocchi1:hover {
         background-color: #ff8fab;
-        transform: scale(1.05);
     }
 
     #bocchi2 {
@@ -62,10 +60,6 @@
         color: #ff6f91;
         border: 2px solid #ffb6c1;
         position: relative;
-    }
-
-    #bocchi2:hover {
-        transform: translateX(-10px);
     }
 
     dialog {
@@ -90,12 +84,10 @@
         margin-top: 10px;
     }
 
-    /* Responsive Adjustments */
     @media (max-width: 480px) {
         .heading {
             font-size: 1.5rem;
         }
-
         button {
             font-size: 0.9rem;
             padding: 10px 20px;
@@ -111,29 +103,52 @@
 <img class="pic" src="pic.jpeg" alt="cute pic">
 
 <div>
-    <button id="bocchi1" onclick="openModal()">Yes! 💖</button>
+    <button id="bocchi1">Yes! 💖</button>
     <button id="bocchi2">No. 😳</button>
 </div>
 
 <dialog id="dialog">
     <img class="pic1" src="shy.jpg" alt="shy pic">
-    <p>YAYYY 💕 See you on 14th!</p>
+    <p>YAYYY Knew you would say yes!💕 See you on 14th!</p>
     <button onclick="closeModal()" class="right">close ♡</button>
 </dialog>
 
 <script>
-const button2 = document.getElementById('bocchi2');
+const yesButton = document.getElementById('bocchi1');
+const noButton = document.getElementById('bocchi2');
+const dialog = document.getElementById("dialog");
 
-button2.addEventListener('mouseover', function() {
-    // Slight shift effect for fun
-    this.style.transform = this.style.transform === "translateX(-10px)" ? "translateX(10px)" : "translateX(-10px)";
+// List of messages when "No" is clicked
+const noMessages = [
+    "Are you sure?",
+    "Really sure?😳",
+    "Are you positive?😬",
+    "Pookie pleaseeeee🥺💖",
+    "Just think about it",
+    "If you say no, we will be veryy sad😢",
+    "I'm sadddd.😭💔"
+];
+
+let noClickCount = 0;
+let yesScale = 1;
+
+noButton.addEventListener('click', function() {
+    if (noClickCount < noMessages.length) {
+        noButton.textContent = noMessages[noClickCount];
+        noClickCount++;
+        // Grow the yes button
+        yesScale += 0.1;
+        yesButton.style.transform = `scale(${yesScale})`;
+    } else {
+        // Optional: make "No" button disappear or final message
+        noButton.textContent = "💔 No more options!";
+    }
 });
 
-var dialog = document.getElementById("dialog");
-
-function openModal() {
+// Yes button opens dialog
+yesButton.addEventListener('click', function() {
     dialog.showModal();
-}
+});
 
 function closeModal() {
     dialog.close();
