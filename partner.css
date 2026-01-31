@@ -1,0 +1,62 @@
+p{
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.95;
+    color: #ff5f9e;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: inherit;
+    transition: all 0.25s ease;
+}
+
+/* YES button */
+#bocchi1 {
+    position: fixed;
+    top: 70%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    background-color: #ffb6d5;
+    color: white;
+}
+
+#bocchi1:hover {
+    background-color: #ff8fbf;
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* NO button */
+#bocchi2 {
+    position: absolute;
+    left: 45%;
+    top: 70%;
+    background-color: #ffe3ef;
+    color: #ff4f93;
+}
+
+/* Modal */
+#dialog{
+    width: 300px;
+    border: none;
+    border-radius: 25px;
+    background: #fff0f6;
+}
+
+/* Close button */
+.right{
+    margin-left: auto;
+    display: block;
+    background: #ffb6d5;
+    color: white;
+}
+
+/* Images */
+.pic {
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+    border-radius:

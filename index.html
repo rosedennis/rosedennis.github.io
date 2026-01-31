@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thick thighs saves lives 💗</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(180deg, #fff0f6, #ffffff);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Comic Sans MS", "Poppins", cursive;
+        color: #ff6f91;
+        text-align: center;
+    }
+
+    .heading {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .pic {
+        width: 220px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    #bocchi1 {
+        background-color: #ffb6c1;
+        color: white;
+        margin-right: 10px;
+    }
+
+    #bocchi1:hover {
+        background-color: #ff8fab;
+        transform: scale(1.05);
+    }
+
+    #bocchi2 {
+        position: absolute;
+        background-color: #fff;
+        color: #ff6f91;
+        border: 2px solid #ffb6c1;
+        left: 40%;
+        top: 75%;
+    }
+
+    dialog {
+        border: none;
+        border-radius: 25px;
+        padding: 20px;
+        background: #fff0f6;
+        box-shadow: 0 15px 30px rgba(255, 182, 193, 0.5);
+    }
+
+    .pic1 {
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+
+    .right {
+        background-color: #ffb6c1;
+        color: white;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<p class="heading">Will you be our Galentine?</p>
+
+<img class="pic" src="pic.jpeg" alt="cute pic">
+
+<button id="bocchi1" onclick="openModal()">Yes! 💖</button>
+<button tabindex="-1" id="bocchi2">No.😳</button>
+
+<dialog id="dialog">
+    <img class="pic1" src="shy.jpg" width="210" height="250" alt="">
+    <p>YAYYY 💕 See you on 14th!</p>
+    <button onclick="closeModal()" class="right">close ♡</button>
+</dialog>
+
+<script>
+const button2 = document.getElementById('bocchi2');
+let left = 40;
+
+button2.addEventListener('mouseover', function() {
+    left = left === 40 ? 30 : 40;
+    this.style.left = left + '%';
+});
+
+var dialog = document.getElementById("dialog");
+
+function openModal() {
+    dialog.showModal();
+}
+
+function closeModal() {
+    dialog.close();
+}
+</script>
+
+</body>
+</html>
