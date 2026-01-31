@@ -15,7 +15,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-family: "Poppins", sans-serif; /* simple cute font */
+        font-family: 'Poppins', sans-serif; /* simple, cute font */
         color: #ff6f91;
         text-align: center;
         padding: 20px;
@@ -25,6 +25,7 @@
     .heading {
         font-size: 2rem;
         margin-bottom: 15px;
+        font-weight: 600;
     }
 
     img.pic {
@@ -41,9 +42,10 @@
         border-radius: 30px;
         font-size: 1rem;
         cursor: pointer;
-        transition: 0.3s ease, transform 0.2s ease;
+        transition: 0.3s ease, transform 0.2s ease, left 0.2s ease, top 0.2s ease;
         margin: 5px;
         min-width: 120px;
+        position: relative;
     }
 
     #bocchi1 {
@@ -59,7 +61,6 @@
         background-color: #fff;
         color: #ff6f91;
         border: 2px solid #ffb6c1;
-        position: relative;
     }
 
     dialog {
@@ -118,7 +119,7 @@ const yesButton = document.getElementById('bocchi1');
 const noButton = document.getElementById('bocchi2');
 const dialog = document.getElementById("dialog");
 
-// Messages for "No" button
+// List of messages when "No" is clicked
 const noMessages = [
     "Are you sure?",
     "Really sure?😳",
@@ -130,23 +131,24 @@ const noMessages = [
 ];
 
 let noClickCount = 0;
-let yesScale = 1;
-let noScale = 1;
+let yesScale = 1.1; // start slightly bigger
 
 noButton.addEventListener('click', function() {
     if (noClickCount < noMessages.length) {
         noButton.textContent = noMessages[noClickCount];
         noClickCount++;
-
-        // Grow Yes button
+        // Grow the yes button faster
         yesScale += 0.2;
         yesButton.style.transform = `scale(${yesScale})`;
-
-        // Shrink No button
-        noScale = Math.max(0.5, noScale - 0.1); // minimum 50%
-        noButton.style.transform = `scale(${noScale})`;
     } else {
-        noButton.textContent = "💔 No more options!";
+        // Make the No button run away randomly
+        const maxX = window.innerWidth - noButton.offsetWidth - 20;
+        const maxY = window.innerHeight - noButton.offsetHeight - 20;
+        const randX = Math.floor(Math.random() * maxX);
+        const randY = Math.floor(Math.random() * maxY);
+        noButton.style.position = 'absolute';
+        noButton.style.left = randX + 'px';
+        noButton.style.top = randY + 'px';
     }
 });
 
